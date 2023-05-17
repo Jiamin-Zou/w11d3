@@ -1,17 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import './index.css';
-import App from './App';
-import ThemeProvider from './context/ThemeContext';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+import "./index.css";
+import App from "./App";
+import ClimateProvider from "./context/ClimateContext";
+import ThemeProvider from "./context/ThemeContext";
 
 function Root() {
   return (
-      <ThemeProvider>
-        <BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <ClimateProvider>
           <App />
-        </BrowserRouter>
-      </ThemeProvider>
+        </ClimateProvider>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
@@ -19,5 +22,5 @@ ReactDOM.render(
   <React.StrictMode>
     <Root />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
