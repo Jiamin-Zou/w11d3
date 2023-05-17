@@ -1,4 +1,4 @@
-import { LoremIpsum } from 'react-lorem-ipsum';
+import { LoremIpsum, loremIpsum } from 'react-lorem-ipsum';
 
 const Home = () => {
     return (

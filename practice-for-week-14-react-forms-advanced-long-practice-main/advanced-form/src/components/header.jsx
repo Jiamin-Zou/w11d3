@@ -2,14 +2,14 @@ import Logo from "../_assets/logo.png";
 import "./header.css"
 
 
-const Header = (props) => {
+const Header = ({currentTab}) => {
 
   return (
     <header className="header">
       <img src={Logo} alt="Logo" />
       <div>
         <h1>Survey Tool</h1>
-        <p>Home</p>
+        <p>{currentTab}</p>
       </div>
     </header>
   );

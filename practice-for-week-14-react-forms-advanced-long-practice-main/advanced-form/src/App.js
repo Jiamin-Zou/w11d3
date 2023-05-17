@@ -5,16 +5,21 @@ import Report from "./components/report";
 import SampleSurvey from "./components/sampleSurvey";
 import SensoryPreferrences from "./components/sensoryPreferences";
 import "./app.css";
+import { useState } from "react";
 
 function App() {
+  const [currentTab, setCurrentTab] = useState("Home");
+  const handleOnclick = ((e)=> {
+    setCurrentTab(e.target.innerText)
+  })
   return (
     <div className="app">
-      <Header />
+      <Header currentTab={currentTab} />
       <nav className="nav">
-        <Link to="/sampleSurvey">Sample Survey</Link>
-        <Link to="/sensoryPreferences">Sensory Preferences</Link>
-        <Link to="/report">Report</Link>
-        <Link to="/">Home</Link>
+        <Link to="/sampleSurvey" onClick={handleOnclick}>Sample Survey</Link>
+        <Link to="/sensoryPreferences" onClick={handleOnclick}>Sensory Preferences</Link>
+        <Link to="/report" onClick={handleOnclick}>Report</Link>
+        <Link to="/" onClick={handleOnclick}>Home</Link>
       </nav>
 
       <Switch>
