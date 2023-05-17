@@ -5,34 +5,34 @@ import { useEffect, useState } from "react";
 
 function Thermometer() {
   const { temperature, setTemperature } = useClimate();
-  const [actualTemp, setActualTemp] = useState(temperature)
+  const [desireTemp, setDesireTemp] = useState(temperature)
 
   useEffect(()=>{
     console.log("running effect")
-    console.log("temp:" + temperature);
-    console.log("actualTemp:" + actualTemp)
+    console.log("desireTemp:" + desireTemp);
+    console.log("actualTemp(temperature):" + temperature);
 
-    if(temperature > actualTemp) {
+    if(temperature < desireTemp) {
       setTimeout(()=>
-        setActualTemp( (prevTemp) => (prevTemp + 1) ), 1000
+        setTemperature( (prevTemp) => (prevTemp + 1) ), 1000
         )
-    } else if (temperature < actualTemp) {
+    } else if (temperature > desireTemp) {
       setTimeout(()=>
-        setActualTemp( (prevTemp) => (prevTemp - 1) ), 1000
+        setTemperature( (prevTemp) => (prevTemp - 1) ), 1000
         )
     }
-  },)
+  })
 
 
 
   return (
     <section>
       <h2>Thermometer</h2>
-      <div className="actual-temp">Actual Temperature: {actualTemp}°F</div>
+      <div className="actual-temp">Actual Temperature: {temperature}°F</div>
       <ReactSlider
-        value={temperature}
+        value={desireTemp}
         onAfterChange={(val) => {
-          setTemperature(val)
+          setDesireTemp(val)
         }}
         className="thermometer-slider"
         thumbClassName="thermometer-thumb"
